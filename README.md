@@ -56,7 +56,7 @@ Example for Neuropixels 1.0:
 
 ## Probe Insertion
 
-A probe insertion describes the position of the tip of a probe and its angles within a reference atlas. The (ap, ml, dv) coordinates will be relative to the calibration coordinate in the reference-atlas and atlas-transform. A (yaw, pitch, roll) of (0,0,0) is a probe pointing down (ventral) with its electrode sites facing forward (anterior). 
+A probe insertion describes the position of the tip of a probe and its angles within a reference atlas. The (ap, ml, dv) coordinates and positive directions will be relative to the calibration coordinate and axes defined by the reference-atlas and atlas-transform. A (yaw, pitch, roll) of (0,0,0) is a probe pointing down (ventral) with its electrode sites facing forward (anterior). Positive yaw rotates clockwise, positive pitch brings the probe up toward horizontal, and positive roll rotates clockwise. A blank atlas-transform means the insertion is defined the reference atlas space.
 
 Example shown is the IBL repeated site.
 
@@ -64,12 +64,25 @@ Field | Type | Example
 ---|---|---
 ap | float (um) | 2000
 ml | float (um) | 2243
-dv | float (um) | 960
-yaw | float (deg) | 1
+dv | float (um) | -292
+yaw | float (deg) | -90
 pitch | float (deg) | 15
 roll | float (deg) | 0
 reference-atlas | string | CCF
 atlas-transform | string | Qiu2018
+
+Example
+
+{
+  "ap":"2000",
+  "ml":"2243",
+  "dv":"960",
+  "yaw":"Neuropixels 1.0",
+  "pitch":"imec",
+  "roll":"960",
+  "reference-atlas":"CCF",
+  "atlas-transform":"Qiu2018"
+}
 
 ## Anatomical data API
 
