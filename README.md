@@ -61,6 +61,7 @@ A probe insertion describes the position of the tip of a probe and its angles wi
 Example shown is the IBL repeated site.
 
 Field | Type | Example
+---|---|---
 ap | float (um) | 2000
 ml | float (um) | 2243
 dv | float (um) | 960
