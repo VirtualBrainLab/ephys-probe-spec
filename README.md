@@ -73,6 +73,7 @@ atlas-transform | string | Qiu2018
 
 Example
 
+```
 {
   "ap":"2000",
   "ml":"2243",
@@ -83,6 +84,7 @@ Example
   "reference-atlas":"CCF",
   "atlas-transform":"Qiu2018"
 }
+```
 
 ## Anatomical data API
 
