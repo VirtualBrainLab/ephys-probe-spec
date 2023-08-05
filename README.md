@@ -18,6 +18,7 @@ probe_channel_map.csv | coordinates of electrode surface relative to the tip and
 ### probe.json
 
 Field | Type | Example
+---|---|---
 name | string | Neuropixels 1.0
 producer | string | imec
 channels | int | 960
