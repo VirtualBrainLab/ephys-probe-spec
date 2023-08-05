@@ -86,31 +86,28 @@ Example
 
 ## Anatomical data API
 
-An anatomical data message is a string for communicating between applications that support per-channel anatomical data.
-
-File | Description
----|---
-probe.json | probe metadata, in JSON format
-probe_model.obj | 3D model of the probe shanks and any attached silicon, the tip of the reference shank is at the origin
-probe_hardware.obj | (optional) 3D model of the additional hardware
-probe_channel_map.csv | coordinates of electrode surface relative to the tip and selection layers
+An anatomical data message is a string for communicating between applications that support per-channel anatomical data. Multiple probes can be sent in one string as an array `"[probe-string-0,probe-string1,...]"`
 
 ### Uncompressed format
 
 The uncompressed format sends data for every channel as a single string, with the format:
 
-"probe-name;channel-data"
+`"probe-name;channel-data"`
 
 Where the channel-data string has the format:
 
-"index,acronym,hex-color;..."
+`"index,acronym,hex-color;..."`
 
 For example:
 
+```
 "ProbeA;0,ACAv,40A666;1,ACAv,40A666;...;958,-,000000;959,-,000000"
+```
 
 ### Compressed format
 
 Channels with identical acronyms are compressed, using the first format "indexFirst-indexLast"
 
+```
 "ProbeA;0-27,ACAv,40A666;28-77,ACAd,40A666;78-175,-,000000;176-959,-,000000"
+```
