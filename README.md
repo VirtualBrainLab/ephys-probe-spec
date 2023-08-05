@@ -2,6 +2,8 @@
 
 This readme describes specifications for describing electrophysiology **probes** and **probe insertions** as well as standard formats for sharing **anatomical data** about a probe insertion.
 
+The individual folders in this repository contain the relevant files for the probes used in [Pinpoint](https://github.com/virtualBrainLab/pinpoint).
+
 ## Probe
 
 A probe is a 3D object, usually shaped like a needle, with one or more shanks which each have electrode sites on them.
