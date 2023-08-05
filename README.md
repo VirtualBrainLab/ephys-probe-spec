@@ -1,12 +1,12 @@
 # probe-format
 
-This readme describes specifications for describing electrophysiology **probes** and **probe insertions** as well as standard formats for sharing **anatomical data** about a probe insertion.
+This readme describes specifications for describing electrophysiology **probes** and **probe insertions** as well as standard formats for sharing **anatomical data** about a probe insertion. These formats are intended for use in visualization software and for sharing data between applications.
 
-The individual folders in this repository contain the relevant files for the probes used in [Pinpoint](https://github.com/virtualBrainLab/pinpoint).
+The individual folders in this repository contain the relevant files for the probes used in [Pinpoint](https://github.com/virtualBrainLab/pinpoint) and examples of the insertion and anatomical data files. 
 
 ## Probe
 
-A probe is a 3D object, usually shaped like a needle, with one or more shanks which each have electrode sites on them.
+A probe is a 3D object with one or more shanks which each have electrode sites on them.
 
 File | Description
 ---|---
@@ -24,6 +24,7 @@ producer | string | imec
 channels | int | 960
 shanks | int | 1
 reference-shank | int | 0
+hardware-files | list of string | ["hardware", "holder"]
 
 Example for Neuropixels 1.0:
 
@@ -33,13 +34,18 @@ Example for Neuropixels 1.0:
   "producer":"imec",
   "channels":"960",
   "shanks":"1",
-  "reference-shank":"0"
+  "reference-shank":"0",
+  "hardware-files": ["hardware", "sensapex_holder", "new_scale_holder"],
 }
 ```
 
 ### probe_model.obj
 
-3D model of the probe with the tip at the origin. If the probe has depth, the origin should be placed at the surface of the probe.
+3D model of the probe with the surface of the tip at the origin.
+
+#### probe_hardware.obj
+
+Additional 3D model files can be included. For example, you may want a 3D model for the circuit boards that are often attached to the actual probe shanks, or for the parts that connect the probe to a micro-manipulator. 
 
 ### probe_channel_map.csv
 
