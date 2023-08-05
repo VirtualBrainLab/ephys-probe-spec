@@ -10,12 +10,12 @@ A probe is a 3D object with one or more shanks which each have electrode sites o
 
 File | Description
 ---|---
-probe.json | probe metadata, in JSON format
-probe_model.obj | 3D model of the probe shanks and any attached silicon, the tip of the reference shank is at the origin
-probe_hardware.obj | (optional) 3D model of additional hardware attached to the probe, replace "hardware" with the name of (e.g. "Sensapex_probe_holder")
-probe_channel_map.csv | coordinates of electrode surface relative to the tip and selection layers
+metadata.json | probe metadata, in JSON format
+model.obj | 3D model of the probe shanks and any attached silicon, the tip of the reference shank is at the origin
+hardware.obj | (optional) 3D model of additional hardware attached to the probe, replace "hardware" with the name of (e.g. "Sensapex_probe_holder")
+channel_map.csv | coordinates of electrode surface relative to the tip and selection layers
 
-### probe.json
+### metadata.json
 
 Field | Type | Example
 ---|---|---
@@ -39,15 +39,15 @@ Example for Neuropixels 1.0:
 }
 ```
 
-### probe_model.obj
+### model.obj
 
 3D model of the probe with the surface of the tip at the origin.
 
-#### probe_hardware.obj
+#### hardware.obj
 
 Additional 3D model files can be included. For example, you may want a 3D model for the circuit boards that are often attached to the actual probe shanks, or for the parts that connect the probe to a micro-manipulator. 
 
-### probe_channel_map.csv
+### channel_map.csv
 
 Fields: index, x, y, z, w, h, d, default, layer1, layer2, ...
 
