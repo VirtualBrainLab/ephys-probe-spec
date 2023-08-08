@@ -1,4 +1,4 @@
-# probe-format
+# electrophysiology probe specifications
 
 This readme describes specifications for describing electrophysiology **probes** and **probe insertions** as well as standard formats for sharing **anatomical data** about a probe insertion. These formats are intended for use in visualization software and for sharing data between applications.
 
