@@ -20,6 +20,7 @@ channel_map.csv | coordinates of electrode surface relative to the tip and selec
 Field | Type | Example
 ---|---|---
 name | string | Neuropixels 1.0
+type | int | 1
 producer | string | imec
 channels | int | 960
 shanks | int | 1
@@ -31,6 +32,7 @@ Example for Neuropixels 1.0:
 ```
 {
   "name":"Neuropixels 1.0",
+  "type":"1"
   "producer":"imec",
   "channels":"960",
   "shanks":"1",
@@ -68,27 +70,27 @@ Example shown is the IBL repeated site.
 
 Field | Type | Example
 ---|---|---
-ap | float (um) | 2000
-ml | float (um) | 2243
-dv | float (um) | -292
-yaw | float (deg) | -90
-pitch | float (deg) | 15
-roll | float (deg) | 0
-reference-atlas | string | CCF
-atlas-transform | string | Qiu2018
+AP | float (um) | 2000
+ML | float (um) | 2243
+DV | float (um) | -292
+Yaw | float (deg) | -90
+Pitch | float (deg) | 15
+Roll | float (deg) | 0
+ReferenceAtlasName | string | CCF
+AtlasTransformName | string | Qiu2018
 
 Example
 
 ```
 {
-  "ap":"2000",
-  "ml":"2243",
-  "dv":"960",
-  "yaw":"Neuropixels 1.0",
-  "pitch":"imec",
-  "roll":"960",
-  "reference-atlas":"CCF",
-  "atlas-transform":"Qiu2018"
+  "AP":"2000",
+  "ML":"2243",
+  "Dv":"960",
+  "Yaw":"Neuropixels 1.0",
+  "Pitch":"imec",
+  "Roll":"960",
+  "ReferenceAtlasName":"CCF",
+  "AtlasTransformName":"Qiu2018"
 }
 ```
 
