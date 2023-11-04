@@ -70,22 +70,25 @@ Example shown is the IBL repeated site.
 
 Field | Type | Example
 ---|---|---
-AP | float (um) | 2000
-ML | float (um) | 2243
-DV | float (um) | -292
+AP | float (mm) | 2.000
+ML | float (mm) | 2.243
+DV | float (mm) | -2.92
 Yaw | float (deg) | -90
 Pitch | float (deg) | 15
 Roll | float (deg) | 0
-ReferenceAtlasName | string | CCF
-AtlasTransformName | string | Qiu2018
+AtlasName | string | CCF
+TransformName | string | Qiu2018
+RefAP | float (mm) | 5.200
+RefML | float (mm) | 5.700
+RefDV | float (mm) | 0.330
 
 Example
 
 ```
 {
-  "AP":"2000",
-  "ML":"2243",
-  "Dv":"960",
+  "AP":"2.000",
+  "ML":"2.243",
+  "Dv":"-2.92",
   "Yaw":"Neuropixels 1.0",
   "Pitch":"imec",
   "Roll":"960",
@@ -93,6 +96,83 @@ Example
   "AtlasTransformName":"Qiu2018"
 }
 ```
+
+Note that the (AP, ML, DV) tip coordinate is relative to to the reference, so to reconstruct the coordinate in raw CCF space you need to add the reference coordinate to the un-transformed (AP, ML , DV) position. 
+
+## Atlas
+
+A reference atlas is an annotated representation of a brain. We don't define a schema for atlas information but instead rely on the BrainGlobe Atlas API. For more information, see github.com/virtualBrainLab/brainAtlas/ or https://github.com/brainglobe/bg-atlasapi 
+
+The following atlases are defined in Pinpoint
+
+Name | Prefix | Resolution(s) | Species - strain | Reference
+---|---|---|---|---
+CCF | ccf | 25 | Mouse - C57BL/6J | Wang et al. 2020
+Waxholm | wxh | 39, 78 | Rat - Sprague Dawley | Papp et al. 2014
+
+## Atlas Transform
+
+An atlas transform defines an Affine Transformation or Nonlinear Deformation Field. 
+
+### Affine Transform
+
+Affine transformations are applied as an Euler rotation (Yaw, then Pitch, then Roll) around Bregma followed by scaling and axis inversion (if needed). The scaling values go from the Atlas to the Transform.
+
+Field | Type | Description
+---|---|---
+Yaw | float (deg) | Clockwise rotation around DV axis
+Pitch | float (deg) | Clockwise rotation around ML axis
+Roll | float (deg) | Clockwise rotation around AP axis
+ScaleAP | float | Change in scale on AP
+ScaleML | float | Change in scale on ML
+ScaleDV | float | Change in scale on DV
+SignAP | int | Axis direction for AP (relative to Atlas)
+SignML | int | Axis direction for ML (relative to Atlas)
+SignDV | int | Axis direction for DV (relative to Atlas)
+Name | string | Name
+
+Example
+
+```
+{
+  "Name":"Qiu2018",
+  "Yaw":"0",
+  "Pitch":"-5",
+  "Roll":"0",
+  "ScaleAP":"1.031",
+  "ScaleML":"0.952",
+  "ScaleDV":"0.885",
+  "SignAP":"-1",
+  "SignML":"1",
+  "SignDV":"-1"
+}
+```
+
+### Non-Linear Deformation Field
+
+todo
+
+## Rig Object
+
+Rig objects are 3D models that can be placed in the scene. Their origin should be relative to the Reference coordinate.
+
+File | Description
+---|---
+model.obj | 3D model of the rig object, the origin will be placed at the active reference coordinate
+
+## Scene
+
+A scene is a JSON object that contains string references to the names of the active Atlas and rig objects, as well as serialized JSON copies of the probe insertions, atlas transform, and any other metadata (e.g. Settings).
+
+Field | Type | Description
+---|---|---
+AtlasName | string | Name of active atlas
+AtlasTransform | string | AtlasTransform JSON
+Data | Array of {"type":"jsondata"} | Other data about the scene
+
+### Data Types
+
+Data can include "probes", "settings", and anything else that is needed to reconstruct a scene representation.
 
 ## Anatomical data API
 
