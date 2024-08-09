@@ -22,9 +22,11 @@ Field | Type | Example | Description
 ---|---|---|---
 name | string | Neuropixels 1.0 | Full name of the probe
 type | int | 1 | Unique ID that can identify this probe, this must be different from all other probes in the library
-producer | string | imec | Company or insitutition producing the probe
+producer | string | "imec" | Company or insitutition producing the probe
 sites | int | 960 | Number of channels on the probe
 shanks | int | 1 | Number of physical shanks
+references | string | "https://www.nature.com/articles/nature24636" | Reference papers about the probe
+spec | string | "https://www.neuropixels.org/_files/ugd/328966_c5e4d31e8a974962b5eb8ec975408c9f.pdf" | Specifications for the probe
 
 Example for Neuropixels 1.0:
 
@@ -35,12 +37,16 @@ Example for Neuropixels 1.0:
   "producer":"imec",
   "sites":"960",
   "shanks":"1",
+  "references":"https://www.nature.com/articles/nature24636",
+  "spec":"https://www.neuropixels.org/_files/ugd/328966_c5e4d31e8a974962b5eb8ec975408c9f.pdf"
 }
 ```
 
 ### model.obj
 
-3D model of the probe with the surface of the tip at the origin. The probe model should be 
+3D model of the probe with the surface of the tip at the origin. The probe model should be at "rest" according to the Pinpoint convention. In Unity this means that the .obj file is rotated such that the shanks are pointing along the +Z axis, while the site surface points along the +Y axis. On multi-shank probes the reference shank should be at the origin (i.e. additional shanks should be offset in the -X direction).
+
+In Blender this convention corresponds to the shanks pointing along the -Y axis, the site surface pointing along the +Z axis, and additional shanks should be offset in the +X direction.
 
 #### hardware.obj
 
